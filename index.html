@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IOCL-Stock Price Prediction by Lkay Dhillon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .prediction {
+            margin-top: 30px;
+        }
+
+        .prediction label {
+            display: inline-block;
+            width: 180px;
+        }
+
+        .prediction span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Price Prediction by Lalit Dhillon (21151002003)</h1>
+        <form method="POST" action="/predict">
+            <label for="Open">Open Price:</label>
+            <input type="text" id="Open" name="Open" required><br><br>
+            
+            <label for="High">High Price:</label>
+            <input type="text" id="High" name="High" required><br><br>
+            
+            <label for="Low">Low Price:</label>
+            <input type="text" id="Low" name="Low" required><br><br>
+            
+            <label for="Volume">Volume:</label>
+            <input type="text" id="Volume" name="Volume" required><br><br>
+            
+            <button type="submit">Predict</button>
+        </form>
+
+        
+        <div class="prediction">
+		{% if results %}
+            <label>Random Forest Predicted Price:</label>
+            <span>{{ results['Random Forest Predicted Price'] }}</span><br>
+            <label>Linear Regression Predicted Price:</label>
+            <span>{{ results['Linear Regression Predicted Price'] }}</span>
+        {% endif %}
+		</div>
+    </div>
+</body>
+</html>
